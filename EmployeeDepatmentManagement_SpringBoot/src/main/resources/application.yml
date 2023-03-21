@@ -1,0 +1,37 @@
+kafka:
+  endpoint: localhost:9092   # Add kafka nodes/servers separated by comma
+  offset_reset: earliest
+  max_poll_records: 30
+  concurrency: 3
+  time_interval: 10
+  max_attempts: 3
+  producer:
+    error_topic: test-topic-error
+    acks: 1
+    request_timeout_ms: 5000
+  consumer:
+    topic: test-topic-2
+    error_topic: test-topic-error
+    consumer_group: test-topic-consumer-group
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/companydb
+    username: root
+    password: 1234
+    driveClassName: com.mysql.cj.jdbc.Driver
+#
+  redis:
+    database: 0
+  cache:
+    redis:
+      time-to-live: 15
+#
+server:
+  port: 8181
+  servlet:
+    context-path: /
